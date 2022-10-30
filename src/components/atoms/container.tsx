@@ -44,3 +44,27 @@ export const ContainerHeaderModal = styled(ContainerQty)`
   padding: 16px;
   color: purple;
 `
+export const ContainerSlider = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 50px 0;
+  @media (max-width: 600px) {
+    width: 95%;
+  }
+`
+export const ContainerBanner = styled.div`
+  align-items: center;
+  display: flex !important;
+  justify-content: center;
+  border-radius: 15px;
+  width: 99% !important;
+  height: 100%;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  @media (max-width: 600px) {
+    margin-left: -20px;
+    height: 100px;
+  }
+`

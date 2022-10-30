@@ -5,6 +5,7 @@ import { ContainerGrid } from '../atoms/container'
 import { ResultLableQuery } from '../atoms/custom-element'
 import { CustomText } from '../atoms/typography'
 import ProductCard, { IProductCard } from '../organisme/ProductCard'
+import Banner from '../organisme/Banner'
 
 interface HomePageContentProps {
   filteredItems: IProductCard[]
@@ -28,6 +29,7 @@ export default function HomePageContent(props: HomePageContentProps) {
         value={query}
         onChange={onSearchChange}
       />
+      <Banner />
       <CustomText fsize={22} margin="20px 0 0 0">
         Product List
       </CustomText>
