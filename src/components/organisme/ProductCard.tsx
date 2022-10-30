@@ -4,14 +4,14 @@ import { FlexProductCard } from '../atoms/flex'
 import { CustomText } from '../atoms/typography'
 
 export interface IProductCard {
-  id: number
+  id: string
   title: string
   price: number
   images: string[]
 }
 
 interface ProductCardProps extends IProductCard {
-  redirectToDetail(id: number): void
+  redirectToDetail(id: string): void
 }
 
 export default function ProductCard(props: ProductCardProps) {

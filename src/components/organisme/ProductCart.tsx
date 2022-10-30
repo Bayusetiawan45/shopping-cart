@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ContainerCardContent, ContainerQty } from '../atoms/container'
 import {
   FlexEnd,
@@ -26,12 +26,16 @@ interface ProductCartProps {
 
 export default function ProductCart(props: ProductCartProps) {
   const { id, onDelete } = props
-  const { products } = useProductService()
+  const { products, getProducts } = useProductService()
   const { decreaseCartQuantity, increaseCartQuantity, getItemQuantity } =
     useShoppingCart()
 
   const item = products.find((item: { id: string }) => item.id === id)
-  if (item === null) return null
+  console.log(item)
+
+  useEffect(() => {
+    getProducts()
+  }, [])
 
   return (
     <FlexProductCart>

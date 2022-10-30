@@ -23,7 +23,7 @@ export default function HomePage() {
     setQuery(value)
   }
 
-  const redirectToDetail = (id: number) => {
+  const redirectToDetail = (id: string) => {
     navigate(`/detail/${id}`)
   }
 

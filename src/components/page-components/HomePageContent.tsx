@@ -10,7 +10,7 @@ interface HomePageContentProps {
   filteredItems: IProductCard[]
   onSearchChange(e: React.ChangeEvent<HTMLInputElement>): void
   query: string
-  redirectToDetail(id: number): void
+  redirectToDetail(id: string): void
 }
 
 export default function HomePageContent(props: HomePageContentProps) {
