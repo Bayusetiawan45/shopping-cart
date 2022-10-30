@@ -1,13 +1,18 @@
 import { Divider } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useShoppingCart } from '../../context/ShoppingCartContext'
 import { formatCurrency } from '../../utilities/formatCurrency'
 import { FlexCartInfo, FlexRowSpaceBetween } from '../atoms/flex'
 import { CustomText } from '../atoms/typography'
-import storeItems from '../../data/items.json'
+import { useProductService } from '../../context/ProductService'
 
 export default function InfoCart() {
   const { cartItems, cartQuantity } = useShoppingCart()
+  const { getProducts, products } = useProductService()
+
+  useEffect(() => {
+    getProducts()
+  }, [])
   return (
     <FlexCartInfo>
       <CustomText fsize={14} fweight={600} color="#6B7588" margin="0 0 5px 0">
@@ -34,7 +39,9 @@ export default function InfoCart() {
         <CustomText fsize={14} fweight={600} color="#6B7588">
           {formatCurrency(
             cartItems.reduce((total, cartItem) => {
-              const item = storeItems.find((item) => item.id === cartItem.id)
+              const item = products.find(
+                (item: { id: string }) => item.id === cartItem.id
+              )
               return total + (item?.price || 0) * cartItem.quantity
             }, 0)
           )}

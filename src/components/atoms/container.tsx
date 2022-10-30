@@ -4,6 +4,7 @@ import { Grid } from '@mui/material'
 export const CustomContainer = styled.div`
   align-self: center;
   width: 80%;
+  margin-top: 30px;
   @media (max-width: 600px) {
     width: 95%;
   }

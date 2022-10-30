@@ -18,7 +18,8 @@ export default function HomePageContent(props: HomePageContentProps) {
   return (
     <Layout>
       <TextField
-        id="searc"
+        color="secondary"
+        id="search"
         label="Search Product"
         variant="outlined"
         fullWidth
@@ -27,6 +28,9 @@ export default function HomePageContent(props: HomePageContentProps) {
         value={query}
         onChange={onSearchChange}
       />
+      <CustomText fsize={22} margin="20px 0 0 0">
+        Product List
+      </CustomText>
       {filteredItems.length > 0 ? (
         <>
           {query && (

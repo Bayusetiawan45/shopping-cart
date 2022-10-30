@@ -4,7 +4,7 @@ import React from 'react'
 interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   variant?: 'text' | 'outlined' | 'contained'
   label: string
-  color: 'primary' | 'secondary'
+  color?: 'primary' | 'secondary' | 'inherit'
 }
 
 export const CustomButton = ({
@@ -15,7 +15,7 @@ export const CustomButton = ({
 }: ButtonProps) => {
   return (
     <Button variant={variant} onClick={onClick} color={color}>
-      {label}
+      <span style={{ textTransform: 'capitalize' }}>{label}</span>
     </Button>
   )
 }

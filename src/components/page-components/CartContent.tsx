@@ -45,21 +45,23 @@ export default function CartContent(props: CartContentProps) {
           ) : (
             <EmptyCart redirectSearchProduct={redirectSearchProduct} />
           )}
-          <FlexFull margin="20px 0">
-            <CustomButton
-              variant="outlined"
-              label="Cari Produk"
-              color="secondary"
-              onClick={redirectSearchProduct}
-            />
-          </FlexFull>
+          {cartItems.length > 0 && (
+            <FlexFull margin="20px 0">
+              <CustomButton
+                variant="outlined"
+                label="Cari Produk"
+                color="secondary"
+                onClick={redirectSearchProduct}
+              />
+            </FlexFull>
+          )}
         </ContainerCartList>
         <InfoCart />
       </FlexResponsiveDirection>
       <Modal
         openModal={modalOpen}
         toggleModal={toggleModal}
-        modalTitle="Delete Produk"
+        modalTitle="Hapus Produk"
       >
         <ModalDelete
           handleDelete={handleDelete}

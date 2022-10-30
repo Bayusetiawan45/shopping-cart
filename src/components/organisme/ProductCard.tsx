@@ -21,7 +21,7 @@ export default function ProductCard(props: ProductCardProps) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="200"
           image={images[0]}
           alt="product image"
         />
@@ -29,7 +29,6 @@ export default function ProductCard(props: ProductCardProps) {
           <CustomText
             fweight={500}
             fsize={15}
-            ffamily="Inter"
             margin="0 0 10px 0"
             style={{
               textOverflow: 'ellipsis',
@@ -41,7 +40,7 @@ export default function ProductCard(props: ProductCardProps) {
           >
             {title}
           </CustomText>
-          <CustomText fweight={600} fsize={16} ffamily="Inter">
+          <CustomText fweight={600} fsize={16}>
             {formatCurrency(price)}
           </CustomText>
         </CardContent>

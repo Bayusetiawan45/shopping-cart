@@ -39,10 +39,14 @@ export default function NavBar({ window }: Props) {
     window !== undefined ? () => window().document.body : undefined
 
   return (
-    <Box bgcolor="white">
+    <Box
+      bgcolor="#7c4dff"
+      boxShadow="0px 4px 4px rgba(0, 0, 0, 0.1)"
+      borderRadius="10px"
+    >
       <NavbarContainer>
         <FlexClickable onClick={() => navigate('/')}>
-          <CustomText fweight={700} fsize={30} ffamily="Inter">
+          <CustomText fweight={900} fsize={30} color="white">
             Shopping Cart
           </CustomText>
         </FlexClickable>
@@ -56,7 +60,7 @@ export default function NavBar({ window }: Props) {
             <CustomButton
               key={item.path}
               variant="text"
-              color="secondary"
+              color="primary"
               label={item.title}
               onClick={() => navigate(item.path)}
             />

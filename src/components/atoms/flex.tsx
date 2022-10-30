@@ -72,3 +72,9 @@ export const FlexFull = styled(Flex)<FlexFullProps>`
   width: 93%;
   margin: ${(props) => (props.margin ? props.margin : '0')};
 `
+export const FlexProductDetail = styled(FlexRowSpaceBetween)`
+  align-items: start;
+`
+export const FlexProductDescription = styled(Flex)`
+  max-width: 50%;
+`

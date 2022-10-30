@@ -31,7 +31,6 @@ export default function ProductCart(props: ProductCartProps) {
     useShoppingCart()
 
   const item = products.find((item: { id: string }) => item.id === id)
-  console.log(item)
 
   useEffect(() => {
     getProducts()
@@ -48,14 +47,14 @@ export default function ProductCart(props: ProductCartProps) {
         />
         <ContainerCardContent>
           <FlexRowSpaceBetween>
-            <CustomText fweight={500} fsize={16} ffamily="Inter">
+            <CustomText fweight={500} fsize={16}>
               {item?.title}
             </CustomText>
             <Button aria-label="reduce" onClick={() => onDelete(id)}>
               <DeleteIcon fontSize="small" color="error" />
             </Button>
           </FlexRowSpaceBetween>
-          <CustomText fweight={500} fsize={16} ffamily="Inter" margin="10px 0">
+          <CustomText fweight={500} fsize={16} margin="10px 0">
             {formatCurrency(item?.price ?? 0)}
           </CustomText>
           <FlexEnd>

@@ -21,7 +21,7 @@ export default function CartBadge() {
   return (
     <IconButton aria-label="cart" onClick={() => navigate('/cart')}>
       <StyledBadge badgeContent={cartQuantity} color="secondary">
-        <ShoppingCartIcon />
+        <ShoppingCartIcon color="primary" />
       </StyledBadge>
     </IconButton>
   )
