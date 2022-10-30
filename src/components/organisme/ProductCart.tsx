@@ -13,29 +13,31 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useShoppingCart } from '../../context/ShoppingCartContext'
 import { CustomImage } from '../atoms/image'
-import storeItems from '../../data/items.json'
 import { formatCurrency } from '../../utilities/formatCurrency'
+import { useProductService } from '../../context/ProductService'
 
 interface ProductCartProps {
-  id: number
+  id: string
+  onDelete(id: string): void
+  modalOpen: boolean
+  toggleModal(isOpen: boolean): any
+  handleDelete(): void
 }
 
-export default function ProductCart({ id }: ProductCartProps) {
-  const {
-    decreaseCartQuantity,
-    increaseCartQuantity,
-    getItemQuantity,
-    removeFromCart,
-  } = useShoppingCart()
+export default function ProductCart(props: ProductCartProps) {
+  const { id, onDelete } = props
+  const { products } = useProductService()
+  const { decreaseCartQuantity, increaseCartQuantity, getItemQuantity } =
+    useShoppingCart()
 
-  const item = storeItems.find((item) => item.id === id)
+  const item = products.find((item: { id: string }) => item.id === id)
   if (item === null) return null
 
   return (
     <FlexProductCart>
       <FlexRow>
         <CustomImage
-          src={item?.imageUrl}
+          src={item?.images?.[0]}
           alt="product image"
           width={100}
           height={100}
@@ -43,9 +45,9 @@ export default function ProductCart({ id }: ProductCartProps) {
         <ContainerCardContent>
           <FlexRowSpaceBetween>
             <CustomText fweight={500} fsize={16} ffamily="Inter">
-              {item?.name}
+              {item?.title}
             </CustomText>
-            <Button aria-label="reduce" onClick={() => removeFromCart(id)}>
+            <Button aria-label="reduce" onClick={() => onDelete(id)}>
               <DeleteIcon fontSize="small" color="error" />
             </Button>
           </FlexRowSpaceBetween>
@@ -58,6 +60,7 @@ export default function ProductCart({ id }: ProductCartProps) {
                 aria-label="reduce"
                 color="secondary"
                 onClick={() => decreaseCartQuantity(id)}
+                disabled={getItemQuantity(id) === 1}
               >
                 <RemoveIcon fontSize="small" />
               </Button>

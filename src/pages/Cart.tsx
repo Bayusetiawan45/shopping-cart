@@ -1,68 +1,39 @@
-import React from 'react'
-import { CustomText } from '../components/atoms/typography'
-import ProductCart from '../components/organisme/ProductCart'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import CartContent from '../components/page-components/CartContent'
 import { useShoppingCart } from '../context/ShoppingCartContext'
-import Layout from '../layouts/Layout'
-import { formatCurrency } from '../utilities/formatCurrency'
-import storeItems from '../data/items.json'
-import {
-  FlexCartInfo,
-  FlexResponsiveDirection,
-  FlexRowSpaceBetween,
-} from '../components/atoms/flex'
-import { Divider } from '@mui/material'
-import { ContainerCartList } from '../components/atoms/container'
 
 export default function Cart() {
-  const { cartItems, cartQuantity } = useShoppingCart()
+  const navigate = useNavigate()
+  const [modalOpen, setModalOpen] = useState(false)
+  const [deleteId, setDeleteId] = useState<string>()
+  const { removeFromCart } = useShoppingCart()
+
+  const redirectSearchProduct = () => {
+    navigate('/')
+  }
+
+  const onDelete = (id: string) => {
+    setDeleteId(id)
+    setModalOpen(true)
+  }
+
+  const toggleModal = (isOpen: boolean) => () => {
+    setModalOpen(isOpen)
+  }
+
+  const handleDelete = () => {
+    if (deleteId) removeFromCart(deleteId)
+    setModalOpen(false)
+  }
+
   return (
-    <Layout>
-      <FlexResponsiveDirection>
-        <ContainerCartList>
-          {cartItems.map((item) => (
-            <ProductCart key={item.id} {...item} />
-          ))}
-        </ContainerCartList>
-        <FlexCartInfo>
-          <CustomText
-            fsize={14}
-            fweight={600}
-            color="#6B7588"
-            margin="0 0 5px 0"
-          >
-            Rincian Belanja
-          </CustomText>
-          <Divider />
-          <FlexRowSpaceBetween>
-            <CustomText fsize={14} fweight={400} color="#8F90A6" margin="5px 0">
-              Total Barang
-            </CustomText>
-            <CustomText fsize={14} fweight={400} color="#8F90A6">
-              {cartQuantity} (barang)
-            </CustomText>
-          </FlexRowSpaceBetween>
-          <FlexRowSpaceBetween>
-            <CustomText
-              fsize={14}
-              fweight={600}
-              color="#6B7588"
-              margin="10px 0 0 0"
-            >
-              Total Harga
-            </CustomText>
-            <CustomText fsize={14} fweight={600} color="#6B7588">
-              {formatCurrency(
-                cartItems.reduce((total, cartItem) => {
-                  const item = storeItems.find(
-                    (item) => item.id === cartItem.id
-                  )
-                  return total + (item?.price || 0) * cartItem.quantity
-                }, 0)
-              )}
-            </CustomText>
-          </FlexRowSpaceBetween>
-        </FlexCartInfo>
-      </FlexResponsiveDirection>
-    </Layout>
+    <CartContent
+      redirectSearchProduct={redirectSearchProduct}
+      modalOpen={modalOpen}
+      onDelete={onDelete}
+      toggleModal={toggleModal}
+      handleDelete={handleDelete}
+    />
   )
 }

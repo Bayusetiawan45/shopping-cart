@@ -29,10 +29,6 @@ export default function NavBar({ window }: Props) {
       title: 'Home',
       path: '/',
     },
-    {
-      title: 'Store',
-      path: '/store',
-    },
   ]
 
   const handleDrawerToggle = () => {

@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import { Card } from '@mui/material'
 
+interface FlexFullProps {
+  margin?: string
+}
+
 export const Flex = styled.div`
   -js-display: flex;
   display: flex;
@@ -18,8 +22,8 @@ export const FlexProductCart = styled(Card)`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   background: white;
-  margin-top: 10px;
   padding: 10px;
+  margin-bottom: 20px;
   @media (max-width: 600px) {
     width: 100%;
   }
@@ -30,19 +34,24 @@ export const FlexCartInfo = styled.div`
   border: 1px solid #dde5e9;
   border-radius: 4px;
   background: white;
-  margin-top: 10px;
   padding: 10px;
-  margin-left: 20px;
   @media (max-width: 600px) {
     width: 95%;
     margin: 20px 0 0 0;
+  }
+`
+export const FlexEmptyCart = styled(FlexCartInfo)`
+  width: 90%;
+  text-align: center;
+  padding: 30px 0;
+  @media (max-width: 600px) {
+    width: 100%;
   }
 `
 export const FlexRow = styled(Flex)`
   flex-direction: row;
   align-items: center;
 `
-
 export const FlexRowSpaceBetween = styled(FlexRow)`
   justify-content: space-between;
 `
@@ -58,4 +67,8 @@ export const FlexEnd = styled(FlexRow)`
 `
 export const FlexClickable = styled(Flex)`
   cursor: pointer;
+`
+export const FlexFull = styled(Flex)<FlexFullProps>`
+  width: 93%;
+  margin: ${(props) => (props.margin ? props.margin : '0')};
 `

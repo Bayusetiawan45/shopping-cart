@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { Grid } from '@mui/material'
-import { Flex } from './flex'
 
 export const CustomContainer = styled.div`
   align-self: center;
@@ -33,9 +32,14 @@ export const ContainerCardContent = styled.div`
   width: 100%;
   margin-left: 10px;
 `
-export const ContainerCartList = styled(Flex)`
-  width: 100%;
+export const ContainerCartList = styled(Grid)`
+  width: 90%;
   @media (max-width: 600px) {
     width: 95%;
   }
+`
+export const ContainerHeaderModal = styled(ContainerQty)`
+  justify-content: space-between;
+  padding: 16px;
+  color: purple;
 `

@@ -1,27 +1,28 @@
 import { CardActionArea, CardContent, CardMedia } from '@mui/material'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { formatCurrency } from '../../utilities/formatCurrency'
 import { FlexProductCard } from '../atoms/flex'
 import { CustomText } from '../atoms/typography'
 
-interface ProductCardProps {
+export interface IProductCard {
   id: number
-  name: string
+  title: string
   price: number
-  imageUrl: string
+  images: string[]
+}
+
+interface ProductCardProps extends IProductCard {
+  redirectToDetail(id: number): void
 }
 
 export default function ProductCard(props: ProductCardProps) {
-  const { id, name, price, imageUrl } = props
-  const navigate = useNavigate()
+  const { id, title, price, images, redirectToDetail } = props
   return (
-    <FlexProductCard onClick={() => navigate(`/store/${id}`)}>
+    <FlexProductCard onClick={() => redirectToDetail(id)}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={imageUrl}
+          image={images[0]}
           alt="product image"
         />
         <CardContent>
@@ -38,7 +39,7 @@ export default function ProductCard(props: ProductCardProps) {
               WebkitBoxOrient: 'vertical',
             }}
           >
-            {name}
+            {title}
           </CustomText>
           <CustomText fweight={600} fsize={16} ffamily="Inter">
             {formatCurrency(price)}
