@@ -7,6 +7,7 @@ import Cart from './pages/Cart'
 import ProductServiceProvider from './context/ProductService'
 import Login from './pages/Login'
 import AuthServiceProvider from './context/AuthService'
+import Register from './pages/Register'
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
             <Route path="/detail/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </ProductServiceProvider>
       </AuthServiceProvider>
