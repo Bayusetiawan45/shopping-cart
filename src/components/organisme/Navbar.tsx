@@ -9,6 +9,7 @@ import { CustomButton } from '../atoms/button'
 import CartBadge from '../molecules/CartBadge'
 import { CustomText } from '../atoms/typography'
 import { FlexClickable } from '../atoms/flex'
+import { userLogin } from '../../utilities/userLogin'
 
 export interface INavItem {
   title: string
@@ -23,12 +24,9 @@ const drawerWidth = 240
 export default function NavBar({ window }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
+  const isLogin = userLogin()
 
   const navItems: INavItem[] = [
-    {
-      title: 'Home',
-      path: '/',
-    },
     {
       title: 'My Order',
       path: '/',
@@ -60,16 +58,33 @@ export default function NavBar({ window }: Props) {
           alignItems="center"
           sx={{ display: { sm: 'flex', xs: 'none' } }}
         >
-          {navItems.map((item) => (
-            <CustomButton
-              key={item.path}
-              variant="text"
-              color="primary"
-              label={item.title}
-              onClick={() => navigate(item.path)}
-            />
-          ))}
           <CartBadge />
+          {isLogin ? (
+            navItems.map((item) => (
+              <CustomButton
+                key={item.path}
+                variant="text"
+                color="primary"
+                label={item.title}
+                onClick={() => navigate(item.path)}
+              />
+            ))
+          ) : (
+            <>
+              <CustomButton
+                variant="contained"
+                color="primary"
+                label="Login"
+                onClick={() => navigate('/login')}
+              />
+              <CustomButton
+                variant="outlined"
+                color="primary"
+                label="Register"
+                onClick={() => navigate('/login')}
+              />
+            </>
+          )}
         </Stack>
         <Box
           color="secondary"

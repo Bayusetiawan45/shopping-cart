@@ -78,3 +78,12 @@ export const FlexProductDetail = styled(FlexRowSpaceBetween)`
 export const FlexProductDescription = styled(Flex)`
   max-width: 50%;
 `
+export const FlexForm = styled(Flex)`
+  background: white;
+  max-width: 300px;
+  height: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  margin: 100px 0;
+`

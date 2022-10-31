@@ -1,5 +1,5 @@
-import axios from 'axios'
 import React, { createContext, ReactNode, useContext, useState } from 'react'
+import { _AxiosService } from '../config/axios.config'
 
 type ProductServiceProviderProps = {
   children: ReactNode
@@ -11,11 +11,6 @@ type ProducServiceContext = {
   getProducts(): any
   getProductsDetails(id: string): any
 }
-
-const _ProductService = axios.create({
-  baseURL: 'http://localhost:5050/api/',
-  timeout: 1000,
-})
 
 const ProducServiceContext = createContext({} as ProducServiceContext)
 
@@ -31,7 +26,7 @@ export default function ProductServiceProvider({
 
   const getProducts = async () => {
     try {
-      const results = await _ProductService.get('products')
+      const results = await _AxiosService.get('products')
       setProducts(results.data)
     } catch (err) {
       console.log(err)
@@ -40,7 +35,7 @@ export default function ProductServiceProvider({
 
   const getProductsDetails = async (id: string) => {
     try {
-      const results = await _ProductService.get(`products/${id}`)
+      const results = await _AxiosService.get(`products/${id}`)
       setDetails(results.data)
     } catch (err) {
       console.log(err)

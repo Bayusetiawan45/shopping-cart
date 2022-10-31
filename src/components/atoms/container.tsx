@@ -68,3 +68,9 @@ export const ContainerBanner = styled.div`
     height: 100px;
   }
 `
+export const ContainerCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  height: 100%;
+`

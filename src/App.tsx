@@ -5,17 +5,22 @@ import ProductDetail from './pages/ProductDetail'
 import { ShoppingCartProvider } from './context/ShoppingCartContext'
 import Cart from './pages/Cart'
 import ProductServiceProvider from './context/ProductService'
+import Login from './pages/Login'
+import AuthServiceProvider from './context/AuthService'
 
 export const App = () => {
   return (
     <ShoppingCartProvider>
-      <ProductServiceProvider>
-        <Routes>
-          <Route path="/" element={<Store />} />
-          <Route path="/detail/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </ProductServiceProvider>
+      <AuthServiceProvider>
+        <ProductServiceProvider>
+          <Routes>
+            <Route path="/" element={<Store />} />
+            <Route path="/detail/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </ProductServiceProvider>
+      </AuthServiceProvider>
     </ShoppingCartProvider>
   )
 }

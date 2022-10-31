@@ -12,9 +12,10 @@ export const CustomButton = ({
   label,
   onClick,
   color,
+  style,
 }: ButtonProps) => {
   return (
-    <Button variant={variant} onClick={onClick} color={color}>
+    <Button variant={variant} onClick={onClick} color={color} style={style}>
       <span style={{ textTransform: 'capitalize' }}>{label}</span>
     </Button>
   )
