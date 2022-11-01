@@ -87,12 +87,13 @@ export default function NavBar({ window }: Props) {
       bgcolor="white"
       boxShadow="0px 4px 4px rgba(123,77,255, 0.3)"
       borderRadius="10px"
+      position="fixed"
+      width="100%"
+      zIndex="10"
     >
       <NavbarContainer>
         <FlexClickable onClick={() => navigate('/')}>
-          <CustomText fweight={900} fsize={30} color="#7B4DFF">
-            ShopCart
-          </CustomText>
+          <CustomImage src="/images/logo2.png" alt="logo" height={50} />
         </FlexClickable>
         <TextField
           color="secondary"
@@ -211,7 +212,10 @@ export default function NavBar({ window }: Props) {
                 </CustomText>
               )}
               {searchItems.map((item: any) => (
-                <ContainerProductSearch key={item.id}>
+                <ContainerProductSearch
+                  key={item.id}
+                  onClick={() => navigate(`/detail/${item.id}`)}
+                >
                   <CustomImage
                     src={item?.images?.[0]}
                     alt="product image"

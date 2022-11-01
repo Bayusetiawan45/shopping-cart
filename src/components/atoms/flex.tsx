@@ -62,7 +62,7 @@ export const FlexRowSpaceBetween = styled(FlexRow)`
 `
 export const FlexResponsiveDirection = styled(Flex)`
   flex-direction: row;
-  margin: 10px 0;
+  margin: 20px 0;
   @media (max-width: 600px) {
     flex-direction: column;
   }
@@ -80,6 +80,11 @@ export const FlexFull = styled(Flex)<FlexFullProps>`
 `
 export const FlexProductDetail = styled(FlexRowSpaceBetween)`
   align-items: start;
+  flex-direction: row;
+  margin: 20px 0;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 export const FlexProductDescription = styled(Flex)`
   max-width: 50%;

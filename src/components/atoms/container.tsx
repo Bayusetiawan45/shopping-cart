@@ -4,7 +4,7 @@ import { Grid } from '@mui/material'
 export const CustomContainer = styled.div`
   align-self: center;
   width: 80%;
-  margin-top: 30px;
+  margin-top: 90px;
   @media (max-width: 600px) {
     width: 95%;
   }
@@ -83,4 +83,10 @@ export const ContainerProductSearch = styled.div`
   width: 100%;
   fled-direction: row;
   margin: 5px 0;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  &:hover {
+    background: rgba(123, 77, 255, 0.1);
+  }
 `

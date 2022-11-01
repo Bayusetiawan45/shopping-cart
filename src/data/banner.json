@@ -1,0 +1,18 @@
+[
+  {
+    "title": "promo1",
+    "path": "./images/promo1.jpeg"
+  },
+  {
+    "title": "promo2",
+    "path": "./images/promo2.jpeg"
+  },
+  {
+    "title": "promo3",
+    "path": "./images/promo3.jpeg"
+  },
+  {
+    "title": "promo4",
+    "path": "./images/promo4.webp"
+  }
+]

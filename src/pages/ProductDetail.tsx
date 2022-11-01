@@ -24,9 +24,19 @@ export default function ProductDetail() {
     }, 500)
   }
 
+  const onBack = () => {
+    navigate('/')
+  }
+
   useEffect(() => {
     if (id) getProductsDetails(id)
   }, [])
 
-  return <ProductDetailContent dataDetail={details} onAddToCart={onAddToCart} />
+  return (
+    <ProductDetailContent
+      dataDetail={details}
+      onAddToCart={onAddToCart}
+      onBack={onBack}
+    />
+  )
 }

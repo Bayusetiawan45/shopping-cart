@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import { ContainerBanner, ContainerSlider } from '../atoms/container'
 import { CustomImage } from '../atoms/image'
-import img from '../../static/images/banner1.webp'
+import banners from '../../data/banner.json'
 
 export default function Banner() {
   const settings = {
@@ -54,24 +54,17 @@ export default function Banner() {
   return (
     <ContainerSlider>
       <Slider {...settings}>
-        <ContainerBanner>
-          <CustomImage
-            src={img}
-            alt="banner image"
-            height="306px"
-            width="100%"
-            bradius="15px"
-          />
-        </ContainerBanner>
-        <ContainerBanner>
-          <CustomImage
-            src={img}
-            alt="banner image"
-            height="306px"
-            width="100%"
-            bradius="15px"
-          />
-        </ContainerBanner>
+        {banners.map((banner) => (
+          <ContainerBanner key={banner.title}>
+            <CustomImage
+              src={banner.path}
+              alt="banner image"
+              height="306px"
+              width="100%"
+              bradius="15px"
+            />
+          </ContainerBanner>
+        ))}
       </Slider>
     </ContainerSlider>
   )

@@ -8,6 +8,7 @@ export interface IProductCard {
   title: string
   price: number
   images: string[]
+  stock: number
 }
 
 interface ProductCardProps extends IProductCard {

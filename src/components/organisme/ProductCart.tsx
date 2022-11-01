@@ -44,6 +44,7 @@ export default function ProductCart(props: ProductCartProps) {
           alt="product image"
           width={100}
           height={100}
+          style={{ borderRadius: '5px' }}
         />
         <ContainerCardContent>
           <FlexRowSpaceBetween>
@@ -74,6 +75,7 @@ export default function ProductCart(props: ProductCartProps) {
                 aria-label="increase"
                 color="secondary"
                 onClick={() => increaseCartQuantity(id)}
+                disabled={getItemQuantity(id) >= item?.stock}
               >
                 <AddIcon fontSize="small" />
               </Button>
