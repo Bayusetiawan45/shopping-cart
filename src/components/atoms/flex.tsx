@@ -12,10 +12,15 @@ export const Flex = styled.div`
   flex: 1;
 `
 export const FlexProductCard = styled(Card)`
-  width: 187px;
+  width: 167px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   background: white;
+  &:hover {
+    transform: translateY(-1px);
+    transition: ease-in 0.2s;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  }
 `
 export const FlexProductCart = styled(Card)`
   width: 90%;
@@ -57,6 +62,7 @@ export const FlexRowSpaceBetween = styled(FlexRow)`
 `
 export const FlexResponsiveDirection = styled(Flex)`
   flex-direction: row;
+  margin: 10px 0;
   @media (max-width: 600px) {
     flex-direction: column;
   }
@@ -65,7 +71,7 @@ export const FlexResponsiveDirection = styled(Flex)`
 export const FlexEnd = styled(FlexRow)`
   justify-content: end;
 `
-export const FlexClickable = styled(Flex)`
+export const FlexClickable = styled(FlexRow)`
   cursor: pointer;
 `
 export const FlexFull = styled(Flex)<FlexFullProps>`
@@ -86,4 +92,9 @@ export const FlexForm = styled(Flex)`
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   margin: 100px 0;
+`
+export const FlexListContent = styled(Flex)`
+  padding: 20px;
+  overflow-y: auto;
+  width: 500px;
 `

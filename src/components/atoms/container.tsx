@@ -13,7 +13,7 @@ export const CustomContainer = styled.div`
 export const NavbarContainer = styled(CustomContainer)`
   display: flex;
   height: 72px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0px auto;
   align-items: center;
 `
@@ -48,7 +48,6 @@ export const ContainerSlider = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 50px 0;
   @media (max-width: 600px) {
     width: 95%;
   }
@@ -73,4 +72,15 @@ export const ContainerCenter = styled.div`
   justify-content: center;
   margin-top: auto;
   height: 100%;
+`
+export const SkeletonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 10px;
+`
+export const ContainerProductSearch = styled.div`
+  display: flex;
+  width: 100%;
+  fled-direction: row;
+  margin: 5px 0;
 `

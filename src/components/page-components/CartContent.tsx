@@ -3,12 +3,14 @@ import { useShoppingCart } from '../../context/ShoppingCartContext'
 import Layout from '../../layouts/Layout'
 import { CustomButton } from '../atoms/button'
 import { ContainerCartList } from '../atoms/container'
-import { FlexFull, FlexResponsiveDirection } from '../atoms/flex'
+import { FlexClickable, FlexFull, FlexResponsiveDirection } from '../atoms/flex'
 import Modal from '../atoms/modal'
 import ModalDelete from '../molecules/modal-delete'
 import EmptyCart from '../organisme/EmptyCart'
 import InfoCart from '../organisme/InfoCart'
 import ProductCart from '../organisme/ProductCart'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import { CustomText } from '../atoms/typography'
 
 interface CartContentProps {
   redirectSearchProduct(): void
@@ -16,6 +18,7 @@ interface CartContentProps {
   modalOpen: boolean
   toggleModal(isOpen: boolean): any
   handleDelete(): void
+  onBack(): void
 }
 
 export default function CartContent(props: CartContentProps) {
@@ -25,10 +28,15 @@ export default function CartContent(props: CartContentProps) {
     modalOpen,
     toggleModal,
     handleDelete,
+    onBack,
   } = props
   const { cartItems } = useShoppingCart()
   return (
     <Layout>
+      <FlexClickable onClick={onBack}>
+        <ArrowBackIosIcon />
+        <CustomText>Back</CustomText>
+      </FlexClickable>
       <FlexResponsiveDirection>
         <ContainerCartList>
           {cartItems.length > 0 ? (

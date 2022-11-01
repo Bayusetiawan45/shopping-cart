@@ -1,62 +1,32 @@
-import { TextField } from '@mui/material'
 import React from 'react'
 import Layout from '../../layouts/Layout'
 import { ContainerGrid } from '../atoms/container'
-import { ResultLableQuery } from '../atoms/custom-element'
 import { CustomText } from '../atoms/typography'
 import ProductCard, { IProductCard } from '../organisme/ProductCard'
 import Banner from '../organisme/Banner'
 
 interface HomePageContentProps {
-  filteredItems: IProductCard[]
-  onSearchChange(e: React.ChangeEvent<HTMLInputElement>): void
-  query: string
+  products: IProductCard[]
   redirectToDetail(id: string): void
 }
 
 export default function HomePageContent(props: HomePageContentProps) {
-  const { filteredItems, onSearchChange, query, redirectToDetail } = props
+  const { products, redirectToDetail } = props
   return (
     <Layout>
-      <TextField
-        color="secondary"
-        id="search"
-        label="Search Product"
-        variant="outlined"
-        fullWidth
-        type="search"
-        size="small"
-        value={query}
-        onChange={onSearchChange}
-      />
       <Banner />
       <CustomText fsize={22} margin="20px 0 0 0">
         Product List
       </CustomText>
-      {filteredItems.length > 0 ? (
-        <>
-          {query && (
-            <CustomText fsize={14} color="#8F90A6" margin="10px 0">
-              Menampilkan {filteredItems.length !== 1 && <span>1 -</span>}{' '}
-              {filteredItems.length} produk untuk{' '}
-              <ResultLableQuery>{query}</ResultLableQuery>
-            </CustomText>
-          )}
-          <ContainerGrid container gap={2}>
-            {filteredItems.map((item) => (
-              <ProductCard
-                key={item.id}
-                redirectToDetail={redirectToDetail}
-                {...item}
-              />
-            ))}
-          </ContainerGrid>
-        </>
-      ) : (
-        <CustomText fsize={14} color="#8F90A6" margin="10px 0">
-          Produk tidak ada dalam pencarian
-        </CustomText>
-      )}
+      <ContainerGrid container gap={2}>
+        {products.map((item) => (
+          <ProductCard
+            key={item.id}
+            redirectToDetail={redirectToDetail}
+            {...item}
+          />
+        ))}
+      </ContainerGrid>
     </Layout>
   )
 }

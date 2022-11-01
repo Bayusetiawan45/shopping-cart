@@ -24,7 +24,7 @@ export default function ProductDetailContent(props: ProductDetailContentProps) {
         />
         <FlexProductDescription>
           <CustomText>{dataDetail.title}</CustomText>
-          <CustomText fsize={16} margin="0 0 20px 0">
+          <CustomText fsize={16} margin="10px 0 20px 0">
             {formatCurrency(dataDetail.price)}
           </CustomText>
           <CustomButton

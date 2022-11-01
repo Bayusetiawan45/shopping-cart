@@ -18,6 +18,10 @@ export default function Cart() {
     setModalOpen(true)
   }
 
+  const onBack = () => {
+    navigate('/')
+  }
+
   const toggleModal = (isOpen: boolean) => () => {
     setModalOpen(isOpen)
   }
@@ -34,6 +38,7 @@ export default function Cart() {
       onDelete={onDelete}
       toggleModal={toggleModal}
       handleDelete={handleDelete}
+      onBack={onBack}
     />
   )
 }

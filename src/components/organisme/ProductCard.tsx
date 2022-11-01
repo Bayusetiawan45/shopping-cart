@@ -21,14 +21,14 @@ export default function ProductCard(props: ProductCardProps) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="200"
+          height="160"
           image={images[0]}
           alt="product image"
         />
-        <CardContent>
+        <CardContent sx={{ padding: '10px' }}>
           <CustomText
             fweight={500}
-            fsize={15}
+            fsize={14}
             margin="0 0 10px 0"
             style={{
               textOverflow: 'ellipsis',
