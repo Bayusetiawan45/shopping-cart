@@ -1,5 +1,4 @@
 import React from 'react'
-import { useShoppingCart } from '../../context/ShoppingCartContext'
 import Layout from '../../layouts/Layout'
 import { CustomButton } from '../atoms/button'
 import { ContainerCartList } from '../atoms/container'
@@ -19,6 +18,7 @@ interface CartContentProps {
   toggleModal(isOpen: boolean): any
   handleDelete(): void
   onBack(): void
+  cartList: any
 }
 
 export default function CartContent(props: CartContentProps) {
@@ -29,8 +29,8 @@ export default function CartContent(props: CartContentProps) {
     toggleModal,
     handleDelete,
     onBack,
+    cartList,
   } = props
-  const { cartItems } = useShoppingCart()
   return (
     <Layout>
       <FlexClickable onClick={onBack}>
@@ -39,8 +39,8 @@ export default function CartContent(props: CartContentProps) {
       </FlexClickable>
       <FlexResponsiveDirection>
         <ContainerCartList>
-          {cartItems.length > 0 ? (
-            cartItems.map((item) => (
+          {cartList.length > 0 ? (
+            cartList.map((item: any) => (
               <ProductCart
                 key={item.id}
                 {...item}
@@ -53,7 +53,7 @@ export default function CartContent(props: CartContentProps) {
           ) : (
             <EmptyCart redirectSearchProduct={redirectSearchProduct} />
           )}
-          {cartItems.length > 0 && (
+          {cartList.length > 0 && (
             <FlexFull margin="20px 0">
               <CustomButton
                 variant="outlined"

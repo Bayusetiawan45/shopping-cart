@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import CartContent from '../components/page-components/CartContent'
-import { useShoppingCart } from '../context/ShoppingCartContext'
+import { useCartService } from '../context/CartService'
 
 export default function Cart() {
   const navigate = useNavigate()
   const [modalOpen, setModalOpen] = useState(false)
   const [deleteId, setDeleteId] = useState<string>()
-  const { removeFromCart } = useShoppingCart()
+  const { getUserCartList, userCart, deleteProductFromCart } = useCartService()
 
   const redirectSearchProduct = () => {
     navigate('/')
@@ -27,9 +27,13 @@ export default function Cart() {
   }
 
   const handleDelete = () => {
-    if (deleteId) removeFromCart(deleteId)
+    if (deleteId) deleteProductFromCart(deleteId)
     setModalOpen(false)
   }
+
+  useEffect(() => {
+    getUserCartList()
+  }, [])
 
   return (
     <CartContent
@@ -39,6 +43,7 @@ export default function Cart() {
       toggleModal={toggleModal}
       handleDelete={handleDelete}
       onBack={onBack}
+      cartList={userCart}
     />
   )
 }

@@ -1,5 +1,6 @@
 import { TextField } from '@mui/material'
 import React, { useState } from 'react'
+import Background from '../components/atoms/background'
 import { CustomButton } from '../components/atoms/button'
 import { ContainerCenter } from '../components/atoms/container'
 import { FlexForm } from '../components/atoms/flex'
@@ -27,44 +28,51 @@ export default function Login() {
   }
 
   return (
-    <ContainerCenter>
-      <FlexForm>
-        <CustomText fsize={26} fweight={900} margin="0 0 15px 0">
-          Login
-        </CustomText>
-        <TextField
-          color="secondary"
-          name="email"
-          label="Email"
-          variant="outlined"
-          fullWidth
-          type="email"
-          size="small"
-          onChange={handleChange}
-        />
-        <TextField
-          color="secondary"
-          name="password"
-          label="Password"
-          variant="outlined"
-          fullWidth
-          type="password"
-          size="small"
-          margin="normal"
-          onChange={handleChange}
-        />
-        <CustomButton
-          variant="contained"
-          color="secondary"
-          label="Login"
-          type="submit"
-          style={{ marginTop: '20px' }}
-          onClick={handleSubmit}
-        />
-        <CustomText fsize={12} color="#8F90A6" margin="10px 0">
-          Dont have an account? Register
-        </CustomText>
-      </FlexForm>
-    </ContainerCenter>
+    <Background>
+      <ContainerCenter>
+        <FlexForm>
+          <CustomText
+            fsize={26}
+            fweight={900}
+            color="black"
+            margin="0 0 15px 0"
+          >
+            Login
+          </CustomText>
+          <TextField
+            color="secondary"
+            name="email"
+            label="Email"
+            variant="outlined"
+            fullWidth
+            type="email"
+            size="small"
+            onChange={handleChange}
+          />
+          <TextField
+            color="secondary"
+            name="password"
+            label="Password"
+            variant="outlined"
+            fullWidth
+            type="password"
+            size="small"
+            margin="normal"
+            onChange={handleChange}
+          />
+          <CustomButton
+            variant="contained"
+            color="secondary"
+            label="Login"
+            type="submit"
+            style={{ marginTop: '20px' }}
+            onClick={handleSubmit}
+          />
+          <CustomText fsize={12} color="#8F90A6" margin="10px 0">
+            Dont have an account? Register
+          </CustomText>
+        </FlexForm>
+      </ContainerCenter>
+    </Background>
   )
 }

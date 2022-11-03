@@ -71,7 +71,6 @@ export const ContainerCenter = styled.div`
   display: flex;
   justify-content: center;
   margin-top: auto;
-  height: 100%;
 `
 export const SkeletonContainer = styled.div`
   display: flex;

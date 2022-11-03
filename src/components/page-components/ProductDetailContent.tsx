@@ -17,9 +17,10 @@ interface ProductDetailContentProps {
   dataDetail: IProductCard
   onAddToCart(): void
   onBack(): void
+  handleAddToCart(): void
 }
 export default function ProductDetailContent(props: ProductDetailContentProps) {
-  const { dataDetail, onAddToCart, onBack } = props
+  const { dataDetail, handleAddToCart, onBack } = props
   return (
     <Layout>
       <FlexClickable onClick={onBack}>
@@ -56,7 +57,7 @@ export default function ProductDetailContent(props: ProductDetailContentProps) {
           <CustomButton
             variant="contained"
             label="+ Keranjang"
-            onClick={onAddToCart}
+            onClick={handleAddToCart}
             color="secondary"
           />
         </FlexProductDescription>
