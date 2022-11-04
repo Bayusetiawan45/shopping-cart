@@ -31,7 +31,6 @@ export default function CartContent(props: CartContentProps) {
     onBack,
     cartList,
   } = props
-  console.log('cartList', cartList)
   return (
     <Layout>
       <FlexClickable onClick={onBack}>
@@ -40,8 +39,8 @@ export default function CartContent(props: CartContentProps) {
       </FlexClickable>
       <FlexResponsiveDirection>
         <ContainerCartList>
-          {cartList.length > 0 ? (
-            cartList[0].cart_items?.map((item: any) => (
+          {cartList[0]?.cart_items?.length > 0 ? (
+            cartList[0]?.cart_items?.map((item: any) => (
               <ProductCart
                 key={item._id}
                 {...item}
@@ -55,7 +54,7 @@ export default function CartContent(props: CartContentProps) {
           ) : (
             <EmptyCart redirectSearchProduct={redirectSearchProduct} />
           )}
-          {cartList.length > 0 && (
+          {cartList[0]?.cart_items?.length > 0 && (
             <FlexFull margin="20px 0">
               <CustomButton
                 variant="outlined"

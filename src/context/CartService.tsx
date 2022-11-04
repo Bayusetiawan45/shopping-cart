@@ -8,11 +8,10 @@ type CartServiceProviderProps = {
 
 type CartServiceContext = {
   addToCart(data: CartData): void
-  getCartList(): void
-  cartList: any
   getUserCartList(): void
   userCart: any
   deleteProductFromCart(id: string): void
+  updateQuantity(id: string, action: string): void
 }
 
 export type CartData = {
@@ -30,7 +29,6 @@ export default function CartServiceProvider({
   children,
 }: CartServiceProviderProps) {
   const navigate = useNavigate()
-  const [cartList, setCartList] = useState([])
   const [userCart, setUserCart] = useState([])
 
   const addToCart = async (data: CartData) => {
@@ -39,14 +37,6 @@ export default function CartServiceProvider({
       if (results.status === 201) {
         navigate('/cart')
       }
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  const getCartList = async () => {
-    try {
-      const results = await _AxiosService.get('carts')
-      setCartList(results.data)
     } catch (err) {
       console.log(err)
     }
@@ -68,15 +58,34 @@ export default function CartServiceProvider({
       console.log(err)
     }
   }
+  const updateQuantity = async (id: string, action: string) => {
+    const data = {
+      cart_items: {
+        product: id,
+        quantity: action === 'increase' ? 1 : -1,
+      },
+    }
+    try {
+      const results = await _AxiosService.put(
+        `carts/update-quantity/${id}`,
+        data
+      )
+      if (results.status === 201) {
+        console.log('updated')
+        getUserCartList()
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <CartServiceContext.Provider
       value={{
         addToCart,
-        getCartList,
-        cartList,
         getUserCartList,
         userCart,
         deleteProductFromCart,
+        updateQuantity,
       }}
     >
       {children}
