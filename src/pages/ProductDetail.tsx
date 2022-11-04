@@ -35,9 +35,10 @@ export default function ProductDetail() {
     if (!id || !userId) return
     const data = {
       user_id: userId,
-      product_id: id,
-      quantity: 1,
-      total_payment: 122,
+      cart_items: {
+        product: id,
+        quantity: 1,
+      },
     }
     addToCart(data)
   }

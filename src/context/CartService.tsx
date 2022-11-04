@@ -17,9 +17,7 @@ type CartServiceContext = {
 
 export type CartData = {
   user_id: string
-  product_id: string
-  quantity: number
-  total_payment: number
+  cart_items: any
 }
 
 const CartServiceContext = createContext({} as CartServiceContext)
@@ -37,8 +35,8 @@ export default function CartServiceProvider({
 
   const addToCart = async (data: CartData) => {
     try {
-      const results = await _AxiosService.post('carts', data)
-      if (results.status === 200) {
+      const results = await _AxiosService.post('carts/add-to-cart', data)
+      if (results.status === 201) {
         navigate('/cart')
       }
     } catch (err) {
@@ -64,7 +62,7 @@ export default function CartServiceProvider({
   }
   const deleteProductFromCart = async (id: string) => {
     try {
-      await _AxiosService.delete(`carts/${id}`)
+      await _AxiosService.delete(`carts/remove-from-cart/${id}`)
       getUserCartList()
     } catch (err) {
       console.log(err)

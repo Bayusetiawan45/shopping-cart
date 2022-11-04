@@ -17,18 +17,21 @@ import { useProductService } from '../../context/ProductService'
 // import { useCartService } from '../../context/CartService'
 
 interface ProductCartProps {
-  product_id: string
-  id: string
+  product: string
+  _id: string
   onDelete(id: string): void
   modalOpen: boolean
   toggleModal(isOpen: boolean): any
   handleDelete(): void
+  quantity: number
 }
 
 export default function ProductCart(props: ProductCartProps) {
-  const { product_id, id, onDelete } = props
+  const { product, onDelete, quantity } = props
   const { products, getProducts } = useProductService()
-  const item = products.find((item: { id: string }) => item.id === product_id)
+  const item = products.find((item: { id: string }) => item.id === product)
+
+  console.log(quantity)
 
   useEffect(() => {
     getProducts()
@@ -53,7 +56,7 @@ export default function ProductCart(props: ProductCartProps) {
               <DeleteIcon
                 fontSize="small"
                 color="error"
-                onClick={() => onDelete(id)}
+                onClick={() => onDelete(product)}
               />
             </Button>
           </FlexRowSpaceBetween>
@@ -71,7 +74,7 @@ export default function ProductCart(props: ProductCartProps) {
                 <RemoveIcon fontSize="small" />
               </Button>
               <CustomText fsize={14} fweight={400} margin="0 10px">
-                {/* {getItemQuantity(id)} */}
+                {quantity}
               </CustomText>
               <Button
                 aria-label="increase"

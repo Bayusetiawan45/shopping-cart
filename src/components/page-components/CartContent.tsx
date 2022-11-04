@@ -31,6 +31,7 @@ export default function CartContent(props: CartContentProps) {
     onBack,
     cartList,
   } = props
+  console.log('cartList', cartList)
   return (
     <Layout>
       <FlexClickable onClick={onBack}>
@@ -40,10 +41,11 @@ export default function CartContent(props: CartContentProps) {
       <FlexResponsiveDirection>
         <ContainerCartList>
           {cartList.length > 0 ? (
-            cartList.map((item: any) => (
+            cartList[0].cart_items?.map((item: any) => (
               <ProductCart
-                key={item.id}
+                key={item._id}
                 {...item}
+                quantity={item.quantity}
                 onDelete={onDelete}
                 modalOpen={modalOpen}
                 toggleModal={toggleModal}
